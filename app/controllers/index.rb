@@ -1,5 +1,5 @@
 require 'sinatra'
 
 get '/' do
-  puts "Stephanie"
+  p "Stephanie"
 end
