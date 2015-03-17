@@ -2,12 +2,6 @@ require_relative '../spec_helper'
 
 describe 'Index Controller' do
 
-  it 'should get the / route' do
-    get '/'
-    expect(last_response).to be_ok
-    expect(last_response.body).to include('Stephanie')
-  end
-
   it 'should get the /sealions route' do
     get '/sealions'
     expect(last_response).to be_ok
