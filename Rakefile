@@ -22,7 +22,7 @@ namespace :generate do
 
     puts "Creating #{path}"
     File.open(path, 'w+') do |f|
-      f.write(<<-EOF.strip_heredoc)
+      f.write(<<-EOF)
         class #{name} < ActiveRecord::Migration
           def change
           end

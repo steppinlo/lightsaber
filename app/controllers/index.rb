@@ -5,7 +5,8 @@ require 'sinatra'
 # end
 
 #create
-post '/sealions' do
+post '/sealions/:name' do
+  Sealion.create(params[:name])
   redirect '/sealions'
 end
 
@@ -14,13 +15,17 @@ get '/sealions' do
 end
 
 #read
-get '/sealions/:ID' do
-  id = params[:id]
-  "Your ID is #{id}"
+get '/sealions/:name' do
+  name = params[:name]
+  "Your ID is #{name}"
 end
 
 #update
 put '/sealions/:ID' do
+
+  new_sealion = Sealion.find_by(params[:name])
+  new_sealion.update_attribute(name: )
+
   redirect '/sealions'
 end
 
