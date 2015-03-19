@@ -5,8 +5,8 @@ require 'sinatra'
 # end
 
 #create
-post '/sealions/:name' do
-  Sealion.create(params[:name])
+post '/sealions' do
+  Sealion.create(params)
   redirect '/sealions'
 end
 
@@ -21,14 +21,15 @@ get '/sealions/:name' do
 end
 
 #update
-put '/sealions/:name' do
-  new_sealion = Sealion.find_by(params[:name])
-  new_sealion.update_attribute()
+put '/sealions/:id' do
+  updated_feat = params[:name]
+  new_sealion = Sealion.find(params[:id])
+  new_sealion.update_attributes(params)
   redirect '/sealions'
 end
 
 #delete
 delete '/sealions/:name' do
-  destroy Sealion.find_by(params[:name])
+  Sealion.find(params[:name]).destroy
   redirect '/sealions'
 end
