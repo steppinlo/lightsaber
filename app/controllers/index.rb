@@ -17,19 +17,18 @@ end
 #read
 get '/sealions/:name' do
   name = params[:name]
-  "Your ID is #{name}"
+  "Your name is #{name}"
 end
 
 #update
-put '/sealions/:ID' do
-
+put '/sealions/:name' do
   new_sealion = Sealion.find_by(params[:name])
-  new_sealion.update_attribute(name: )
-
+  new_sealion.update_attribute()
   redirect '/sealions'
 end
 
 #delete
-delete '/sealions/:ID' do
+delete '/sealions/:name' do
+  destroy Sealion.find_by(params[:name])
   redirect '/sealions'
 end
