@@ -8,10 +8,10 @@ describe 'Index Controller' do
     expect(last_response.body).to include('ARK ARK ARK')
   end
 
-  it 'should get the /sealions/:ID route' do
-    get '/sealions/:ID?id=6'
+  it 'should get the /sealions/:name route' do
+    get '/sealions/:name?name=6'
     expect(last_response).to be_ok
-    expect(last_response.body).to include("Your ID is 6")
+    expect(last_response.body).to include("Your name is 6")
   end
 
   it 'should redirect post to /sealions' do
@@ -23,7 +23,7 @@ describe 'Index Controller' do
   end
 
   it 'should redirect put to /sealions' do
-    put '/sealions/:ID'
+    put '/sealions/:name'
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response).to be_ok
@@ -31,7 +31,7 @@ describe 'Index Controller' do
   end
 
   it 'should redirect delete to /sealions' do
-    delete '/sealions/:ID'
+    delete '/sealions/:name'
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response).to be_ok
