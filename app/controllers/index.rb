@@ -9,9 +9,9 @@ require 'sinatra'
 post '/sealions' do
   # Sealion.create(params)
   # erb :new
-  new_sealion = Sealion.new ( new_sealion.name = params[:name],
-                              new_sealion.location = params[:location],
-                              new_sealion.quirk = params[:quirk])
+  new_sealion = Sealion.new ( name: = params[:name],
+                              location: = params[:location],
+                              quirk: = params[:quirk] )
   if new_sealion.save
     redirect "/sealions/#{curr_sealion.id}"
   else
