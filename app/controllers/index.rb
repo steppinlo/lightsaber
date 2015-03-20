@@ -5,31 +5,56 @@ require 'sinatra'
 # end
 
 #create
+
 post '/sealions' do
-  Sealion.create(params)
-  redirect '/sealions'
+  # Sealion.create(params)
+  # erb :new
+  new_sealion = Sealion.new ( new_sealion.name = params[:name],
+                              new_sealion.location = params[:location],
+                              new_sealion.quirk = params[:quirk])
+  if new_sealion.save
+    redirect "/sealions/#{curr_sealion.id}"
+  else
+    [500, "You dun goofed"]
+  end
+end
+
+get '/sealions/:id/edit' do
+  sealion = Sealion.find_by(id: params[:id])
+  erb :edit, locals:{curr_sealion: sealion}
 end
 
 get '/sealions' do
-  'ARK ARK ARK!'
+  # 'ARK ARK ARK!'
+  @sealions = Sealion.all
+  erb :index
 end
 
+
 #read
-get '/sealions/:name' do
-  name = params[:name]
-  "Your name is #{name}"
+get '/sealions/:id' do
+  id = params[:id]
+  sealion = Sealion.find_by(id: id)
+  erb :show, locals: {curr_sealion: sealion}
 end
 
 #update
 put '/sealions/:id' do
-  updated_feat = params[:name]
-  new_sealion = Sealion.find(params[:id])
-  new_sealion.update_attributes(params)
-  redirect '/sealions'
+  curr_sealion = Sealion.find_by(id: params[:id])
+  if curr_sealion
+    curr_sealion.name = params[:name]
+    curr_sealion.location = params[:location]
+    curr_sealion.quirk = params[:quirk]
+    if curr_sealion.save
+      redirect "/sealions/#{curr_sealion.id}"
+    else
+      [500, "You dun goofed"]
+    end
+  end
 end
 
 #delete
-delete '/sealions/:name' do
-  Sealion.find(params[:name]).destroy
+delete '/sealions/:id' do
+  Sealion.find_by(params[:id]).destroy
   redirect '/sealions'
 end
