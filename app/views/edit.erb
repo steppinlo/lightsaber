@@ -1,0 +1,8 @@
+<p>Edit your details:</p>
+  <form action="/sealions/<%=curr_sealion.id%>" method="post">
+    <input type ='hidden' name='_method' value = 'put' />
+    <input type="text" name='name' value ="<%= curr_sealion.name%>"/><br>
+    <input type="text" name='location' value ="<%= curr_sealion.location%>"/><br>
+    <input type="text" name='quirk' value ="<%= curr_sealion.quirk%>"/><br>
+    <input type="submit" value="Save"/>
+  </form>

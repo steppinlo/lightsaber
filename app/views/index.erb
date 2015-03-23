@@ -1,0 +1,6 @@
+<h3>Sealions!</h3>
+<ul>
+  <% @sealions.each do |curr_lion| %>
+    <li> <a href="/sealions/<%=curr_lion.id%>"><%= curr_lion.name %></a> </li>
+  <% end %>
+</ul>
