@@ -1,8 +1,8 @@
 require 'sinatra'
 
-# get '/' do
-#   "Stephanie"
-# end
+get '/' do
+  erb :index
+end
 
 #create
 
